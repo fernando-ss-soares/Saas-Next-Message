@@ -18,7 +18,7 @@ export default function Home() {
                             </button>
 
                         </div>
-                        <h4 className='fw-semibold mb-0'>Message</h4>
+                        <h4 className='fw-semibold mb-0'>Journey</h4>
                         <p className='text-muted'>Paragraph of text beneath the heading to explain the heading.</p>
                     </div>
 
@@ -54,7 +54,7 @@ export default function Home() {
                             </button>
 
                         </div>
-                        <h4 className='fw-semibold mb-0'>Journey</h4>
+                        <h4 className='fw-semibold mb-0'>Settings</h4>
                         <p className='text-muted'>Paragraph of text beneath the heading to explain the heading.</p>
                     </div>
                 </div>
