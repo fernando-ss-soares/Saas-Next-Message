@@ -5,9 +5,9 @@ export default function Menu() {
 
     const router = useRouter();
 
-    let path = router.pathname
+    let path = router.pathname;
 
-    path.includes()
+    path.includes();
     
     return (
         <div className='d-flex flex-column flex-shrink-0 bg-light vh-100' style={{ width: '4.5rem', position: 'fixed' }}>
@@ -17,7 +17,7 @@ export default function Menu() {
             </Link>
             <ul className='nav nav-pills nav-flush flex-column mb-auto text-center'>
                 <li className='nav-item'>
-                    <Link href='/' className={`nav-link py-3 border-bottom rounded-0 ${router.pathname == '/' ? 'active' : ''}`} aria-current='page' data-bs-toggle='tooltip' data-bs-placement='right' aria-label='Home' data-bs-original-title='Home'>
+                    <Link href='/home' className={`nav-link py-3 border-bottom rounded-0 ${router.pathname.includes('home') ? 'active' : ''}`} aria-current='page' data-bs-toggle='tooltip' data-bs-placement='right' aria-label='Home' data-bs-original-title='Home'>
                         <i className='bi bi-house'></i>
                     </Link>
                 </li>
@@ -43,9 +43,9 @@ export default function Menu() {
                 </li>
             </ul>
             <div className='border-top'>
-                <a href='#' className='d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none'>
+                <Link href='/' className='d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none'>
                     <i className='bi bi-box-arrow-left'></i>
-                </a>
+                </Link>
             </div>
         </div>
     )

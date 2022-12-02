@@ -43,7 +43,7 @@ export default function Documents() {
                             <form onSubmit={onSubmit}>
                                 <div className='input-group mb-3'>
                                     <select className='form-select' id='inputGroupSelect02' name='typeSearch' onChange={onChange}>
-                                        <option value='All' selected>All</option>
+                                        <option value='All' defaultValue>All</option>
                                         <option value='People'>People</option>
                                         <option value='Documents'>Documents</option>
                                         <option value='ID'>ID</option>
