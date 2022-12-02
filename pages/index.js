@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
-//import Context from '../context';
+import { useState } from 'react';
 
 export default function App() {
   
@@ -10,7 +9,6 @@ export default function App() {
   }
 
   const router = useRouter();
-  //const { userContext } = useContext(Context);
   const [ user, setUser ] = useState(User);
 
   function onChange(event) {
