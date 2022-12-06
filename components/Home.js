@@ -1,6 +1,8 @@
+import styles from '../components/Menu.module.css';
+
 export default function Home() {
     return (
-        <div className='container px-4 py-5'>
+        <div className='container-sm px-4 py-5 d-flex flex-column'>
             <h2 className='pb-2 border-bottom'>Next Message</h2>
 
             <div className='row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5'>
@@ -9,7 +11,7 @@ export default function Home() {
                     <p className='text-muted'>Paragraph of text beneath the heading to explain the heading. Well add onto it with another sentence and probably just keep going until we run out of words.</p>
                     <a href='#' className='btn btn-primary btn-lg'>Support Contact</a>
                 </div>
-                <div className='row row-cols-1 row-cols-sm-2 g-4'>
+                <div id={styles.mobile} className='row row-cols-1 row-cols-sm-2 g-4'>
                     <div className='d-flex flex-column gap-2'>
                         <div className='feature-icon-small d-inline-flex justify-content-left fs-4 rounded-3'>
 

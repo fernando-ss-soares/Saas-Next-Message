@@ -28,7 +28,7 @@ export default function App() {
       <div className="container d-flex flex-column justify-content-center align-itens-center text-center vh-100">
 
         <main className="form-signin w-100 m-auto">
-          <form onSubmit={onSubmit} className='container w-50'>
+          <form onSubmit={onSubmit} className='container w-100'>
             <i style={{ fontSize: '64px' }} className='bi bi-chat-left-dots-fill'></i>  
               <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 

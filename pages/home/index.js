@@ -5,7 +5,7 @@ export default function Initial() {
     return (
         <>
 
-        <Menu />
+        <Menu typeMenuBottom={false} />
         <Home />
 
         </>
