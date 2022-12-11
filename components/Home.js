@@ -1,12 +1,6 @@
-import { useContext } from 'react';
-import ContextUser from '../context/index.js'
 import styles from '../components/Menu.module.css';
 
 export default function Home() {
-    
-    const token = useContext(ContextUser);
-
-    console.log(token)
     
     return (
         <div className='container-sm px-4 py-5 d-flex flex-column'>
