@@ -1,0 +1,7 @@
+User-Agent: *
+Disallow: /api
+Disallow: /journey
+Disallow: /settings
+Disallow: /reports
+Disallow: /documents
+Allow: /
