@@ -5,7 +5,7 @@ import Menu from '../../components/Menu';
 export default function Documents() {
 
     const contentSearch = {
-        typeSearch: '',
+        typeSearch: 'All',
         value: ''
     }
 
