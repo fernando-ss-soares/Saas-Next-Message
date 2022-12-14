@@ -26,7 +26,7 @@ export default function App() {
 
     const response = await authNext(user);
     
-    if (response.Message.Token.length > 0) {
+    if (response.Message?.Token.length > 0) {
       localStorage.setItem('Next_User', JSON.stringify(response.Message))
       router.push('/home');
     }
