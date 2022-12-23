@@ -1,10 +1,9 @@
 import axios from "axios";
-import request from "../api.config"
+import request from "../api.config";
 
 async function authNext({ user, password }) {
     
     const URL_NEXT_API = `${request.endpoint}${request.routes.login}`;
-    `${user}, ${password} ${URL_NEXT_API}`
    
     const request_return = axios.get(URL_NEXT_API, { 
         params: {

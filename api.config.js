@@ -1,5 +1,5 @@
 const request = {
-    endpoint: 'http://localhost:8000',
+    endpoint: 'https://plw3477.vps-kinghost.net',
     routes: {
         login: '/login'
     }

@@ -1,8 +1,16 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import authNext from '../auth';
+import { Alert } from '../components/Toast';
+import { Toaster } from 'react-hot-toast';
 
 export default function App() {
+
+  /**
+   * 
+   * Captura os dados digitados nos campos de input.
+   * 
+   */
 
   const User = {
     user: '',
@@ -17,6 +25,12 @@ export default function App() {
     setUser({ ...user,[name]:value });
   }
 
+  /**
+   * 
+   * Valida se o usuário e senha digitado está correto.
+   * 
+   */
+
   async function onSubmit(event) {
     event.preventDefault();
 
@@ -27,9 +41,16 @@ export default function App() {
     const response = await authNext(user);
     
     if (response.Message?.Token.length > 0) {
-      localStorage.setItem('Next_User', JSON.stringify(response.Message))
-      router.push('/home');
+      localStorage.setItem('Next_User', JSON.stringify(response.Message));
+      
+      Alert.notifySucess('User successfully logged in!');
+      
+      return setTimeout(() => {
+        router.push('/home');
+      }, 2000);
     }
+
+    Alert.notifyError('Incorrect username or password!');
     
   }
 
@@ -62,6 +83,7 @@ export default function App() {
               <p className="mt-5 mb-3 text-muted">{ date.getFullYear() }</p>
           </form>
         </main>
+        <Toaster />
       </div>
     </>
   )
