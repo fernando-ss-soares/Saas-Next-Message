@@ -69,16 +69,14 @@ export default function App() {
                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" name='user' autoComplete="false" onChange={onChange} />
                   <label htmlFor="floatingInput">Email address</label>
               </div>
+              
               <div className="form-floating py-1">
                 <input type="password" className="form-control" id="floatingPassword" placeholder="Password" name='password' autoComplete="false" onChange={onChange} />
                   <label htmlFor="floatingPassword">Password</label>
               </div>
-
-              <div className="checkbox my-3">
-                <label>
-                  <input type="checkbox" value="remember-me"/> Remember me
-                </label>
-              </div>
+              
+              <div className="checkbox my-3"/>
+              
               <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
               <p className="mt-5 mb-3 text-muted">{ date.getFullYear() }</p>
           </form>

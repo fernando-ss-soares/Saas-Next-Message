@@ -1,42 +1,51 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Menu from '../../../components/Menu';
+import request from '../../../api.config';
 import axios from 'axios';
 
 export default function Profiles() {
 
+    const [UserSearch, setUserSearch] = useState([]);
+    const [UserData, setUserData] = useState([]);
+
+    /**
+     * 
+     * O useEffect faz a request para API e retorna os dados para o useState setUserData.
+     * 
+     */
+
     useEffect(() => {
         
+        const URL_NEXT_API = `${request.endpoint}${request.routes.searchUser}`;
+        const storageUser = JSON.parse(localStorage.getItem('Next_User'));
+        const storageToken = storageUser.Token;
+        
+        axios.get(URL_NEXT_API, {
+            headers: {
+                'Authorization': 'Bearer ' + `${storageToken}`
+              }
+        })
+        .then((response) => {
+            setUserData(response.data.Message.Users)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+
     }, [])
-    
-    const [JourneySearch, setJourneySearch] = useState('');
 
     function onSubmit(event) {
         event.preventDefault();
     }
 
-    let journeyList = [
-        {
-            id: 1,
-            name: 'Cobrança Cartão de Crédito E-mail',
-            status: 'Ativo'
-        },
-        {
-            id: 2,
-            name: 'Cobrança Cartão de Crédito SMS',
-            status: 'Testando'
-        },
-        {
-            id: 3,
-            name: 'Boas Vindas E-mail',
-            status: 'Configurando'
-        },
-        {
-            id: 4,
-            name: 'Boas Vindas SMS',
-            status: 'Ativo'
-        }
-    ].filter((e) => e.name.includes(JourneySearch))
+    /**
+     * 
+     * A constante Data recebe os dados filtrados conforme o campo UserSearch é preenchido.
+     * 
+     */
+
+    const Data = UserData.filter((e) => e.next_name.includes(UserSearch));
 
     return (
         <>
@@ -62,7 +71,7 @@ export default function Profiles() {
 
                 <form onSubmit={onSubmit}>
                     <div className='form-floating mb-3'>
-                        <input type='text' className='form-control' id='floatingInput' onChange={(event) => setJourneySearch(event.target.value)} />
+                        <input type='text' className='form-control' id='floatingInput' onChange={(event) => setUserSearch(event.target.value)} />
                         <label htmlFor='floatingInput'>User Search</label>
                     </div>
                 </form>
@@ -76,16 +85,16 @@ export default function Profiles() {
                         <tr>
                             <th scope='col'>ID</th>
                             <th scope='col'>Name</th>
-                            <th scope='col'>Status</th>
+                            <th scope='col'>Email</th>
                             <th scope='col'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {journeyList.map((data) => (
-                            <tr key={data.id}>
-                                <th scope='row'>{data.id}</th>
-                                <td>{data.name}</td>
-                                <td>{data.status}</td>
+                        {Data.map((data) => (
+                            <tr key={data._id}>
+                                <th scope='row'>{data.next_id}</th>
+                                <td>{`${data.next_name} ${data.next_lastname}`}</td>
+                                <td>{data.next_email}</td>
                                 <td>
                                     <button type='button' className='btn btn-primary'>Settings</button>
                                 </td>

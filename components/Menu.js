@@ -1,14 +1,23 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import styles from './Menu.module.css';
 
-export default function Menu() {
+export default function Menu({ token }) {
 
     const router = useRouter();
 
-    let path = router.pathname;
+    let path = router.pathname.includes();
 
-    path.includes();
+    useEffect(() => {
+        const token = localStorage.getItem('Next_User');
+
+        if(token === null) {
+            localStorage.clear();
+            router.push('/');
+        }
+
+    }, [router])
 
     return (
         <>
