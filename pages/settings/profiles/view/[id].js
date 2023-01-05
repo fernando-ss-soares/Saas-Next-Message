@@ -1,24 +1,42 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
-import axios from "axios";
-import { Alert } from "../../../../components/Toast";
-import { Toaster } from 'react-hot-toast';
 import request from "../../../../api.config";
+import axios from "axios";
 import Menu from "../../../../components/Menu";
+import { Alert } from "../../../../components/Toast";
+import { Toaster } from "react-hot-toast";
+import { useEffect, useState } from "react";
 
-export default function createProfile() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const router = useRouter();
+export default function viewProfile() {
+  const router = useRouter;
 
-  const Profile = {
-    name: "",
-    lastname: "",
-    email: "",
-    password: "",
-  };
+  const { id } = router().query;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [profile, setProfile] = useState(Profile);
+  const [viewUser, setViewUSer] = useState();
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    const URL_NEXT_API = `${request.endpoint}${request.routes.searchUser}`;
+    const storageUser = JSON.parse(localStorage.getItem("Next_User"));
+    const storageToken = storageUser?.Token;
+
+    axios
+      .get(URL_NEXT_API, {
+        headers: {
+          Authorization: "Bearer " + `${storageToken}`,
+        },
+      })
+      .then((response) => {
+        const { data } = response;
+
+        data.Message.Users.forEach((element) => {
+          if (id == element?.next_id) {
+            setViewUSer(element);
+          }
+        });
+      })
+      .catch(() => {});
+  }, [id]);
 
   function onChange(event) {
     const { name, value } = event.target;
@@ -28,26 +46,6 @@ export default function createProfile() {
 
   function onSubmit(event) {
     event.preventDefault();
-
-    const URL_NEXT_API = `${request.endpoint}${request.routes.createUser}`;
-
-    axios
-      .post(URL_NEXT_API, {
-        name: profile.name,
-        lastname: profile.lastname,
-        email: profile.email,
-        password: profile.password,
-      })
-      .then(() => {
-        Alert.notifySucess("User successfully created!");
-
-        setTimeout(() => {
-          router.push("/settings/profiles");
-        }, 2000);
-      })
-      .catch(() => {
-        Alert.notifyError("Unable to register user. Reason: Error in request");
-      });
   }
 
   return (
@@ -102,25 +100,13 @@ export default function createProfile() {
             />
           </div>
           <div className="col-12">
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              onChange={onChange}
-            />
-          </div>
-          <div className="col-12">
             <button type="submit" className="btn btn-primary">
               <i className="bi bi-save"></i> Save
             </button>
           </div>
         </form>
       </div>
-      <Toaster/>
+      <Toaster />
     </>
   );
 }

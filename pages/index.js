@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import authNext from '../auth';
 import { Alert } from '../components/Toast';
 import { Toaster } from 'react-hot-toast';
@@ -19,6 +19,15 @@ export default function App() {
 
   const router = useRouter();
   const [ user, setUser ] = useState(User);
+
+  useEffect(() => {
+
+    (() => {
+      const token = localStorage.getItem('Next_User');
+      token ? router.push('/home') : false
+    })()
+
+  }, [router])
 
   function onChange(event) {
     const { name, value } = event.target;

@@ -7,17 +7,17 @@ export default function Menu({ token }) {
 
     const router = useRouter();
 
-    let path = router.pathname.includes();
-
     useEffect(() => {
-        const token = localStorage.getItem('Next_User');
-
-        if(token === null) {
-            localStorage.clear();
-            router.push('/');
-        }
-
+        (() => {
+            const token = localStorage.getItem('Next_User');
+            token === null ? localStorage.clear() : false
+            token === null ? router.push('/') : false
+        })()
     }, [router])
+
+    function clearStorage() {
+        localStorage.clear();
+    }
 
     return (
         <>
@@ -60,7 +60,7 @@ export default function Menu({ token }) {
                         </Link>
                     </li>
 
-                    <Link href='/' passHref className='d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none'>
+                    <Link onClick={clearStorage} href='/' passHref className='d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none'>
                         <i className='bi bi-box-arrow-left'></i>
                     </Link>
 
@@ -68,7 +68,7 @@ export default function Menu({ token }) {
             </div>
 
             <div id={styles.mobile} className=' d-flex flex-column flex-shrink-0 bg-light vh-100' style={{ width: '4.5rem', position: 'absolute' }}>
-                <Link href='/' passHref className='d-block p-3 link-dark text-decoration-none text-center' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-original-title='Icon-only'>
+                <Link href='/home' passHref className='d-block p-3 link-dark text-decoration-none text-center' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-original-title='Icon-only'>
                     <i className='bi bi-chat-left-dots-fill'></i>
                     <span className='visually-hidden'>Icon-only</span>
                 </Link>
@@ -100,7 +100,7 @@ export default function Menu({ token }) {
                     </li>
                 </ul>
                 <div className='border-top'>
-                    <Link href='/' passHref className='d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none'>
+                    <Link onClick={clearStorage} href='/' passHref className='d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none'>
                         <i className='bi bi-box-arrow-left'></i>
                     </Link>
                 </div>

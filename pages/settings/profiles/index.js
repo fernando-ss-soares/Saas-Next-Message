@@ -5,8 +5,6 @@ import request from "../../../api.config";
 import axios from "axios";
 
 export default function Profiles() {
-  const [UserSearch, setUserSearch] = useState([]);
-  const [UserData, setUserData] = useState([]);
 
   /**
    *
@@ -17,7 +15,7 @@ export default function Profiles() {
   useEffect(() => {
     const URL_NEXT_API = `${request.endpoint}${request.routes.searchUser}`;
     const storageUser = JSON.parse(localStorage.getItem("Next_User"));
-    const storageToken = storageUser.Token;
+    const storageToken = storageUser?.Token;
 
     axios
       .get(URL_NEXT_API, {
@@ -32,6 +30,9 @@ export default function Profiles() {
         console.log(error);
       });
   }, []);
+
+  const [UserSearch, setUserSearch] = useState([]);
+  const [UserData, setUserData] = useState([]);
 
   function onSubmit(event) {
     event.preventDefault();
@@ -94,9 +95,9 @@ export default function Profiles() {
                 <td>{`${data.next_name} ${data.next_lastname}`}</td>
                 <td>{data.next_email}</td>
                 <td>
-                  <button type="button" className="btn btn-primary">
-                    Settings
-                  </button>
+                  <Link href={`profiles/view/${data.next_id}`} type="button" className="btn btn-primary">
+                    Change user
+                  </Link>
                 </td>
               </tr>
             ))}
