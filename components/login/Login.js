@@ -67,7 +67,7 @@ export default function login() {
     <>
       <div className="container d-flex flex-column justify-content-center align-itens-center text-center vh-100">
         <main className="form-signin w-100 m-auto">
-          <Form onChange={onChange} onSubmit={onSubmit} dateYear={year}/> 
+          <Form onChange={onChange} onSubmit={onSubmit} /> 
         </main>
         <Toaster />
       </div>
