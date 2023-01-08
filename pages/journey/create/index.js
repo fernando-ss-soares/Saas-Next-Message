@@ -12,7 +12,8 @@ import "../../../node_modules/react-quill/dist/quill.snow.css";
 
 import Menu from "../../../components/Menu";
 
-export default function JourneyCreate() {
+export default function journeyCreate() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [value, setValue] = useState("");
 
   function onSubmit(event) {

@@ -1,7 +1,7 @@
 import Menu from '../../components/Menu';
-import Home from '../../components/Home';
+import Home from '../../components/home/Home';
 
-export default function Initial() {
+export default function initial() {
     
     return (
         <>

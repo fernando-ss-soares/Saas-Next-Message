@@ -10,9 +10,16 @@ export default function viewProfile() {
   const router = useRouter;
 
   const { id } = router().query;
-
+  
+  const user = {
+    next_name: '',
+    next_lastname: '',
+    next_email: ''
+  }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [viewUser, setViewUSer] = useState();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [User, setUser] = useState(user);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
@@ -41,7 +48,7 @@ export default function viewProfile() {
   function onChange(event) {
     const { name, value } = event.target;
 
-    setProfile({ ...profile, [name]: value });
+    setUser({ ...User, [name]: value });
   }
 
   function onSubmit(event) {
@@ -71,8 +78,9 @@ export default function viewProfile() {
               type="text"
               className="form-control"
               id="name"
-              name="name"
+              name="next_name"
               onChange={onChange}
+              defaultValue={viewUser?.next_name}
             />
           </div>
           <div className="col-12">
@@ -83,8 +91,9 @@ export default function viewProfile() {
               type="text"
               className="form-control"
               id="lastname"
-              name="lastname"
+              name="next_lastname"
               onChange={onChange}
+              defaultValue={viewUser?.next_lastname}
             />
           </div>
           <div className="col-12">
@@ -95,8 +104,9 @@ export default function viewProfile() {
               type="email"
               className="form-control"
               id="email"
-              name="email"
+              name="next_email"
               onChange={onChange}
+              defaultValue={viewUser?.next_email}
             />
           </div>
           <div className="col-12">
