@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Menu from "../../../components/Menu";
+import Menu from "../../../components/util/Menu";
 import request from "../../../api.config";
 import axios from "axios";
 

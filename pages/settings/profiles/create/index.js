@@ -4,7 +4,7 @@ import axios from "axios";
 import { Alert } from "../../../../components/Toast";
 import { Toaster } from 'react-hot-toast';
 import request from "../../../../api.config";
-import Menu from "../../../../components/Menu";
+import Menu from "../../../../components/util/Menu";
 
 export default function createProfile() {
   // eslint-disable-next-line react-hooks/rules-of-hooks

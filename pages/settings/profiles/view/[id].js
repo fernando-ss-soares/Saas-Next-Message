@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import request from "../../../../api.config";
 import axios from "axios";
-import Menu from "../../../../components/Menu";
+import Menu from "../../../../components/util/Menu";
 import { Alert } from "../../../../components/Toast";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
