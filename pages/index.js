@@ -23,7 +23,7 @@ export default function App() {
   useEffect(() => {
 
     (() => {
-      const token = localStorage.getItem('Next_User');
+      const token = sessionStorage.getItem('Next_User');
       token ? router.push('/home') : false
     })()
 
@@ -50,7 +50,7 @@ export default function App() {
     const response = await authNext(user);
     
     if (response.Message?.Token.length > 0) {
-      localStorage.setItem('Next_User', JSON.stringify(response.Message));
+      sessionStorage.setItem('Next_User', JSON.stringify(response.Message),);
       
       Alert.notifySucess('User successfully logged in!');
       

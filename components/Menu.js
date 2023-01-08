@@ -9,14 +9,14 @@ export default function Menu({ token }) {
 
     useEffect(() => {
         (() => {
-            const token = localStorage.getItem('Next_User');
-            token === null ? localStorage.clear() : false
+            const token = sessionStorage.getItem('Next_User');
+            token === null ? sessionStorage.clear() : false
             token === null ? router.push('/') : false
         })()
     }, [router])
 
     function clearStorage() {
-        localStorage.clear();
+        sessionStorage.clear();
     }
 
     return (
