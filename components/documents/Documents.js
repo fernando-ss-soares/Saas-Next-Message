@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Title from './Title';
-import Menu from '../../components/Menu';
+import Menu from '../../components/util/Menu';
 import Form from './Form';
 import Hero from './Hero';
 

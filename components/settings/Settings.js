@@ -1,4 +1,4 @@
-import Menu from '../../components/Menu';
+import Menu from '../../components/util/Menu';
 import Footer from './Footer';
 import SettingsMenu from './Menu';
 import Title from './Title';

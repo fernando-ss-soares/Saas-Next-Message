@@ -1,4 +1,4 @@
-import Menu from '../Menu';
+import Menu from '../util/Menu';
 import Title from './Title';
 
 export default function componentReport() {

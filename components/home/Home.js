@@ -1,4 +1,4 @@
-import styles from "../../components/Menu.module.css";
+import styles from "../../components/util/Menu.module.css";
 import Card from "./Card";
 import Hero from "./Hero";
 import Title from "./Title";

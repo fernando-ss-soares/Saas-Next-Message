@@ -1,4 +1,4 @@
-import Menu from '../../components/Menu';
+import Menu from '../../components/util/Menu';
 import Home from '../../components/home/Home';
 
 export default function initial() {
